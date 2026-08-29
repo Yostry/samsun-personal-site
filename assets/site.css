@@ -277,14 +277,6 @@ body::after {
 .fact p { font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
 .fact b { color: var(--ink); }
 
-/* 边界框 */
-.boundary {
-  margin-top: 30px; padding: 16px 20px; background: rgba(14, 20, 24, 0.45);
-  border: 1px dashed var(--line); border-radius: var(--radius);
-}
-.boundary .b-title { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--steel); text-transform: uppercase; display: block; margin-bottom: 6px; }
-.boundary p { font-size: 13px; color: var(--ink-soft); line-height: 1.75; }
-
 /* 时间线 */
 .timeline { margin-top: 20px; border-left: 1px solid var(--line); padding-left: 26px; display: grid; gap: 30px; }
 .tl-item { position: relative; }
