@@ -1,7 +1,22 @@
-/* 孙振宇 SamSun · 个人网站 —— 动效脚本（克制：滚动进场 + 数字计数） */
+/* 孙振宇 SamSun · 个人网站 —— 动效脚本（克制：加载画面 + 滚动进场 + 数字计数） */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 加载画面（星舰轨道 · 仅首页） ---------- */
+  var boot = document.getElementById('boot');
+  if (boot) {
+    if (reduce) {
+      boot.parentNode.removeChild(boot);
+    } else {
+      setTimeout(function () {
+        boot.classList.add('done');
+        setTimeout(function () {
+          if (boot.parentNode) boot.parentNode.removeChild(boot);
+        }, 700);
+      }, 1600);
+    }
+  }
 
   /* ---------- 页眉滚动 ---------- */
   var header = document.getElementById('siteHeader');

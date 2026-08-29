@@ -371,6 +371,46 @@ body::after {
   font-size: 10.5px; letter-spacing: 0.18em; color: var(--steel-soft); text-transform: uppercase;
 }
 
+/* ---------- 加载画面（星舰轨道 · 仅首页） ---------- */
+.boot {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(8, 13, 18, 0.96);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.boot.done { opacity: 0; pointer-events: none; }
+.boot-inner { text-align: center; }
+
+.boot-orbit { position: relative; width: 96px; height: 96px; margin: 0 auto 30px; }
+.orbit-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(143, 169, 187, 0.28);
+  animation: orbit-spin 4s linear infinite;
+}
+.orbit-ring::before {
+  content: ""; position: absolute; top: -3px; left: 50%;
+  width: 6px; height: 6px; margin-left: -3px; border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 10px rgba(212, 168, 79, 0.75);
+}
+.orbit-ring-2 { inset: 14px; border-color: rgba(234, 240, 242, 0.12); animation: orbit-spin-rev 6s linear infinite; }
+.orbit-ring-2::before { background: var(--steel); box-shadow: 0 0 8px rgba(143, 169, 187, 0.6); }
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+@keyframes orbit-spin-rev { to { transform: rotate(-360deg); } }
+
+.boot-name { font-family: var(--font-serif); font-weight: 600; font-size: 27px; color: var(--ink); letter-spacing: 0.05em; }
+.boot-name em { font-style: normal; font-family: var(--font-mono); color: var(--steel); font-size: 0.66em; letter-spacing: 0.16em; }
+.boot-kicker { margin-top: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.32em; color: var(--steel-soft); text-transform: uppercase; }
+.boot-line { width: 130px; height: 1px; margin: 24px auto 0; background: linear-gradient(90deg, transparent, rgba(212, 168, 79, 0.65), transparent); }
+.boot-hint { margin-top: 18px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.26em; color: var(--steel-soft); }
+.dots b { animation: dot-blink 1.2s infinite; }
+.dots b:nth-child(2) { animation-delay: 0.2s; }
+.dots b:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dot-blink { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+
 /* ---------- 动效 ---------- */
 .rv { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .rv.in { opacity: 1; transform: none; }
@@ -378,6 +418,7 @@ body::after {
   html { scroll-behavior: auto; }
   .rv { opacity: 1; transform: none; transition: none; }
   * { animation: none !important; transition: none !important; }
+  .boot { opacity: 1; }
 }
 
 /* ---------- 响应式 ---------- */
