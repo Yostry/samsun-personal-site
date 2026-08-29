@@ -65,6 +65,19 @@ body::after {
   pointer-events: none;
 }
 
+/* ---------- 内页背景：与星舰图同色系的纯色（简化） ----------
+   首页保留星舰背景图；其余页面用相近深蓝青纯色，去掉背景图与蒙层 */
+body.inner {
+  background: #0E161C;
+}
+body.inner::before {
+  background: #0E161C;
+  filter: none;
+}
+body.inner::after {
+  background: none;
+}
+
 .site-header, main, .site-footer { position: relative; z-index: 1; }
 
 /* ---------- 无障碍跳转 ---------- */
